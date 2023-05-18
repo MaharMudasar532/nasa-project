@@ -1,41 +1,17 @@
-name: Node.js
-
+name: NASA Project CI
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
-  workflow_dispatch:
-
+      branches: [main]
+      pull_request: 
+          branches: [main]
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14, 16, latest]
-
-    steps:
-      - uses: actions/checkout@v3
-        with: { submodules: true }
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - if: matrix.node-version == 14
-        run: npm install --global npm@7
-      - run: npm ci
-      - run: npm test
-      - run: npm run test:dist
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with: { node-version: 16 }
-         -- run : npm install 
-         -- run : npm run build --prefix client 
+  buidl: 
+    runs-on : window-lastest
+      steps:
+        - uses: actions/checkout@v3
+        - name : Use Node.js version 16
+          uses : action/steps-nodev2
+            with: 
+            node-version: '16'
+            - run : npm install 
+            - run : npm run build --prefix client 
