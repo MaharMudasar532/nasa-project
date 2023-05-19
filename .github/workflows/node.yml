@@ -9,7 +9,7 @@ jobs:
     runs-on : window-lastest
     steps:
     - name : Use Node.js version 16
-      uses : action/steps-nodev2
+    - uses: actions/checkout@v3
       with: 
       node-version: '16'
     - run : npm install 
