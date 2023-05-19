@@ -8,7 +8,7 @@ jobs:
   buidl: 
     runs-on : window-lastest
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
         - name : Use Node.js version 16
           uses : action/steps-nodev2
             with: 
